@@ -12,11 +12,9 @@ package tarea2_lp;
 public class Ferrocarriles extends Comprable{
     public Ferrocarriles(String name, int owner, int props, int ID){
         super(200, owner, props, ID, "Ferrocarriles");
-        this.owner = owner;
     }
     public int getRent(int i){
         return rent[i];
     }
     private final int[] rent = {25, 50, 100, 200};
-    private String owner;
 }

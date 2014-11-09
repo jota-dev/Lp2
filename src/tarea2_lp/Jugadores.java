@@ -25,6 +25,9 @@ public class Jugadores {
     public void addMoney(int n){
         this.money = money + n;
     }
+    public void ban(int n){
+        this.banned = n;
+    }
     
     private final String name;
     private int position;

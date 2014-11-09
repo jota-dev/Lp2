@@ -17,22 +17,12 @@ public final class Ciudad extends Comprable{
         this.color = color; this.rent = rent; this.name = name;
         this.builds = builds; this.buld_price = b_price;
     }
-    public int getOwner(){
-        return this.owner;
-    }
     public int getRent(){
         return this.rent[this.builds];
-    }
-    public int getPrice(){
-        return this.price;
-    }
-    public void setOwner(int own){
-        this.owner = own;
     }
     public String getBlock(){
         return this.color;
     }
-            
             
     private final String color;
     private int[] rent = new int[4];

@@ -15,5 +15,8 @@ public class Otros extends Casilla{
         super(ID, typebox);
         this.action = action;
     }
+    public String getAction() {
+        
+    }
     private String action;
 }

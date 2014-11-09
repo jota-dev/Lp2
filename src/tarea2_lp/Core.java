@@ -43,24 +43,28 @@ public abstract class Core {
             o++;
             a++;
             tablero[a] = new Casilla(f, "Ferrocarril");
-            array_ferrocarril[f] = new Ferrocarriles("Ferrocarril Arica", "banco", 4, f);
+            array_ferrocarril[f] = new Ferrocarriles("Ferrocarril Arica", 0,4, f);
             f++;
         }
         void getPlayers(){
+            //Necesario capturar el numero de jugadores y pasarlo a la variable t
+            //Se crea un arreglo vacío de todos los jugadores
             System.out.println("Ingrese numero de jugadores");
             t = 5;
             jugadores = new Jugadores[t];
         }
         void sortPlayers(){
-            //Repartir jugadores en el arreglo
+            //Repartir turnos de jugadores en el arreglo
         }
     }
     public class Game{
-        int getPosition(int num){
-            return jugadores[num].getPosition();
+        //Clase que ejecuta el loop de juego
+        int getPosition(int playr){
+            return jugadores[playr].getPosition();
         }
         void getCasilla(int pos, int playr_id){
             switch(tablero[pos].typebox){
+                //Actua en base al tipo de casilla
                 case "Ciudad":
                     //analisis de caso
                     Ciudad city = array_ciudad[pos];
@@ -79,27 +83,45 @@ public abstract class Core {
                         playr.addMoney(rent);
                     }
                 case "Otros":
-                    //g
+                    if(array_otros[tablero[pos].ID].)
                 case "Suertes":
                     //sgfd
                 case "Ferrocarriles":
                     //fsdf
             }
         }
+        public void doTaxes(int playr){
+            jugadores[playr].addMoney(-100);
+        }
+        public void gotoJail(int playr){
+            jugadores[playr].setPosition(10);
+            jugadores[playr].ban(1);
+        }
+        public int canBuild(int id, int playr, String color){
+            //Revisa las ciudades de un mismo color, si en una no es dueño, se devuelve 0
+            int i;
+            int b = 0;
+            int cnt = 0;
+            for(i = id;array_ciudad[i].getBlock() == color; i--){
+                if(array_ciudad[i].getOwner() == playr)
+                    cnt++;
+                else
+                    return 0;
+            }
+            for(i = id;array_ciudad[i].getBlock() == color; i++){
+                if(array_ciudad[i].getOwner() == playr)
+                    cnt++;
+                else
+                    return 0;
+            }
+            return playr;
+        }
     }
     public class Refresh{
+        //Refresca el estado de las casillas, principalmente orientado a modificar los dueños de las casillas
+        //Podriamos modificar esto para que sólo actue en el "bloque" o tipo de casilla comprado
         private void refreshBlock(int ID, int playr){
-            String color = array_ciudad[tablero[ID].ID].getBlock();
-            int i;
-            int prop = 0;
-            for(i = ID; array_ciudad[tablero[i].ID].getBlock() == color;, i--){
-                if(playr == array_ciudad[tablero[i].ID].getOwner())
-                    prop++;
-            }
-            for(i = ID; color == array_ciudad[tablero[i].ID].getBlock(); i++){
-                if(playr == array_ciudad[tablero[i].ID].getOwner())
-                    prop++;
-            }
+            
         }
     }
     //Arreglos iniciales
